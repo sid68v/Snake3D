@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerMat
   m_Shader: {fileID: 4800000, guid: 53bcb3da8827058468d57b8236c89f36, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: BOOLEAN_A9B1C5AB_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,10 +48,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_A9B1C5AB: 0
+    - Boolean_A9B1C5AB: 1
     - Vector1_4CB78617: 0.1
-    - Vector1_5A7D9180: 0.5
-    - Vector1_84D9E04F: 0
+    - Vector1_5A7D9180: 0
+    - Vector1_84D9E04F: 0.353
     - Vector1_9259E674: 1
     - _AlphaClip: 0
     - _Blend: 0
@@ -72,7 +72,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_C1FE40DF: {r: 0.14150935, g: 0.02908454, b: 0.0233624, a: 1}
+    - Color_C1FE40DF: {r: 0.0098344665, g: 0.16037738, b: 0.053324647, a: 1}
     - Color_F8CF8534: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_2A5CDD17: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}

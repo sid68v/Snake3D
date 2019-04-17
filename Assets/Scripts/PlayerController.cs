@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
     public GameObject bodyPrefab;
     public Vector3 direction;
 
+    public AudioClip eatClip;
+    public AudioClip dieClip;
+    public AudioClip hissClip;
+
+    AudioSource audioSource;
+
 
 
     Rigidbody rb;
@@ -40,8 +46,9 @@ public class PlayerController : MonoBehaviour
 
         //isTouchpadControlled = (Application.platform == RuntimePlatform.Android) ? true : false;
 
-
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+
         isFood = false;
         direction = Vector3.forward;
 

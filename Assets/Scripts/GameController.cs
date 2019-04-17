@@ -5,9 +5,14 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+
     public GameObject foodPrefab;
     public Vector2 xLimits, zLimits;
+    public AudioClip eatClip;
+    public AudioClip dieClip;
+    public AudioClip hissClip;
 
+    AudioSource audioSource;
     [HideInInspector]
     public bool isFoodExisting;
 
@@ -23,6 +28,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         isFoodExisting = false;
+        audioSource = GetComponent<AudioSource>();
+
         StartCoroutine(CreateFoodAtRandom());
 
     }
@@ -41,11 +48,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void DestroyFood()
-    {
-        GameObject food = GameObject.FindGameObjectWithTag("food");
-        Destroy(food);
-    }
 
     // Update is called once per frame
     void Update()
