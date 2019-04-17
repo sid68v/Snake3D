@@ -651,10 +651,11 @@ MonoBehaviour:
   tilt: 2
   jumpFrequency: 5
   distance: 3.5
+  isFood: 0
+  isTouchpadControlled: 1
   bodyPrefab: {fileID: 782091037227588052, guid: 6e1d07d90332f5443b07f093a5cca44c,
     type: 3}
   direction: {x: 0, y: 0, z: 0}
-  isFood: 0
 --- !u!1 &1145444333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothening: 0.1
+  direction: 0
 --- !u!114 &1868886256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2003919764
 MonoBehaviour:
   m_ObjectHideFlags: 0
