@@ -6,37 +6,27 @@ public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
 
-    //public float smoothening = 2f;
     public float distance = 10f;
     public float height = 10f;
 
     public float rotationDamping = 2f;
     public float heightDamping = 2f;
 
-    // Vector3 offset;
+    WaitForEndOfFrame WAIT_FOR_FRAME;
 
     // Start is called before the first frame update
     void Start()
     {
-
-
-
-        // offset = transform.position - player.transform.position;
-
+        WAIT_FOR_FRAME = new WaitForEndOfFrame();
         StartCoroutine(Follow());
-
     }
 
+    // Follow the player in movement and rotation.
     public IEnumerator Follow()
     {
 
         while (true)
         {
-
-            //// manage camera motion
-            //Vector3 currentCameraPosition = player.transform.position + offset;
-            //transform.position = Vector3.Lerp(transform.position, currentCameraPosition, smoothening);
-
             //manage initial and wanted camera rotation and position
             float wantedRotationAngle = player.transform.localEulerAngles.y;
             float currentRotationAngle = transform.localEulerAngles.y;
@@ -52,8 +42,6 @@ public class CameraFollow : MonoBehaviour
             // convert angle to rotation
             Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
 
-
-
             //shift the camera position
             Vector3 position = player.transform.position; //transform.position;    //change to next two commented code to move the camera in a cinematic fashion.
 
@@ -66,23 +54,9 @@ public class CameraFollow : MonoBehaviour
             //always look at the head
             transform.LookAt(player.transform);
 
-
-
-
-
-            yield return new WaitForEndOfFrame();
-
+            yield return WAIT_FOR_FRAME;
 
         }
-
-
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
