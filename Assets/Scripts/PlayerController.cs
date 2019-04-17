@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
     {
 
         //isTouchpadControlled = (Application.platform == RuntimePlatform.Android) ? true : false;
-       
-        
+
+
         rb = GetComponent<Rigidbody>();
         isFood = false;
         direction = Vector3.forward;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // on hitting oher colliders, if food, grow, else it means hiing either the wall or the body, implying death and restart.
+    // on hitting oher colliders, if food, grow, else it means hitting either the wall or the body, implying death and restart.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("food"))
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             GameController.Instance.isFoodExisting = false;
         }
 
-        if (other.CompareTag("boundary") )/*|| other.CompareTag("body"))*/
+        if (other.CompareTag("boundary") || other.CompareTag("body"))
         {
             Debug.Log("Hit!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
+
         Vector3 headPosition = transform.position;
 
         transform.LookAt(direction + transform.position);
@@ -106,44 +107,24 @@ public class PlayerController : MonoBehaviour
             tail.RemoveAt(tail.Count - 1);
         }
     }
-  
+
     // Update is called once per frame
     void Update()
     {
-        //if (!isTouchpadControlled)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //        direction = -transform.right;
-        //    else if (Input.GetKeyDown(KeyCode.D))
-        //        direction = transform.right;
-        //    else if (Input.GetKeyDown(KeyCode.W))
-        //        direction = transform.forward;
-        //    else if (Input.GetKeyDown(KeyCode.S))
-        //        direction = -transform.forward;
-        //}
-        //else
-        //{
-          
-        //    switch (TouchPadController.Instance.direction)
-        //    {
-        //        case GeneralDataController.DIRECTION.RIGHT: direction = transform.right; break;
-        //        case GeneralDataController.DIRECTION.LEFT: direction = -transform.right; break;
-        //        case GeneralDataController.DIRECTION.FORWARD: direction = transform.forward; break;
-        //        case GeneralDataController.DIRECTION.BACK: direction = -transform.forward; break;
-        //    }
-        //}
 
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            direction = -transform.right;
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            direction = transform.right;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            direction = transform.forward;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            direction = -transform.forward;
 
-        //Debug.Log("**********************" + TouchPadController.Instance.direction + "**************************");
-        //switch (TouchPadController.Instance.direction)
-        //{
-        //    case GeneralDataController.DIRECTION.RIGHT: direction = transform.right; break;
-        //    case GeneralDataController.DIRECTION.LEFT: direction = -transform.right; break;
-        //    case GeneralDataController.DIRECTION.FORWARD: direction = transform.forward; break;
-        //    case GeneralDataController.DIRECTION.BACK: direction = -transform.forward; break;
-        //}
+        Debug.Log(TouchPadController.Instance.direction);
+
 
     }
 
-    
+
 }

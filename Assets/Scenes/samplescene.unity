@@ -652,7 +652,7 @@ MonoBehaviour:
   jumpFrequency: 5
   distance: 3.5
   isFood: 0
-  isTouchpadControlled: 1
+  isTouchpadControlled: 0
   bodyPrefab: {fileID: 782091037227588052, guid: 6e1d07d90332f5443b07f093a5cca44c,
     type: 3}
   direction: {x: 0, y: 0, z: 0}
@@ -1891,7 +1891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2003919764
 MonoBehaviour:
   m_ObjectHideFlags: 0

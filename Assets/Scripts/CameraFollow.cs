@@ -12,12 +12,12 @@ public class CameraFollow : MonoBehaviour
     public float rotationDamping = 2f;
     public float heightDamping = 2f;
 
-    WaitForEndOfFrame WAIT_FOR_FRAME;
+  //  WaitForEndOfFrame WAIT_FOR_FRAME;
 
     // Start is called before the first frame update
     void Start()
     {
-        WAIT_FOR_FRAME = new WaitForEndOfFrame();
+     //   WAIT_FOR_FRAME = new WaitForEndOfFrame();
         StartCoroutine(Follow());
     }
 
@@ -54,8 +54,9 @@ public class CameraFollow : MonoBehaviour
             //always look at the head
             transform.LookAt(player.transform);
 
-            yield return WAIT_FOR_FRAME;
+            //yield return WAIT_FOR_FRAME;
 
+            yield return new WaitForEndOfFrame();
         }
     }
 
