@@ -6,10 +6,14 @@ public class GeneralDataController : MonoBehaviour
 {
     public static GeneralDataController Instance;
 
+    public string TOPSCORE;
+
     private void Awake()
     {
         if (!Instance)
             Instance = this;
+
+        TOPSCORE = "topscore";
     }
 
     public enum DIRECTION

@@ -108,7 +108,7 @@ public class TouchPadController : MonoBehaviour, IPointerDownHandler, IPointerUp
             case GeneralDataController.DIRECTION.RIGHT: PlayerController.Instance.direction = PlayerController.Instance.transform.right; break;
             case GeneralDataController.DIRECTION.LEFT: PlayerController.Instance.direction = -PlayerController.Instance.transform.right; break;
             case GeneralDataController.DIRECTION.FORWARD: PlayerController.Instance.direction = PlayerController.Instance.transform.forward; break;
-            case GeneralDataController.DIRECTION.BACK: PlayerController.Instance.direction = -PlayerController.Instance.transform.forward; break;
+            //case GeneralDataController.DIRECTION.BACK: PlayerController.Instance.direction = -PlayerController.Instance.transform.forward; break;
         }
 
 

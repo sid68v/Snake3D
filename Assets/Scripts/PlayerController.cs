@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,11 +25,12 @@ public class PlayerController : MonoBehaviour
     public AudioClip dieClip;
     public AudioClip hissClip;
 
-    AudioSource audioSource;
-
-
 
     Rigidbody rb;
+
+    [HideInInspector]
+    public AudioSource audioSource;
+
     [HideInInspector]
     List<Transform> tail = new List<Transform>();
 
@@ -64,16 +66,39 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("food"))
-        {
             isFood = true;
-            //GameController.Instance.DestroyFood();
-            GameController.Instance.isFoodExisting = false;
-        }
 
+
+        // this means game over.
         if (other.CompareTag("boundary") || other.CompareTag("body"))
         {
+
+            // pause game
+            Time.timeScale = 0;
+
+            // vibrate
+            Handheld.Vibrate();
+
             Debug.Log("Hit!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            int currentScore = GameController.Instance.score;
+            int topScore = PlayerPrefs.GetInt("topscore");
+
+            // set current score text.
+            GameController.Instance.gameOverPanel.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = currentScore.ToString(); // current score
+
+            // if current score beats top score, replaces the topscore with current and displays it. else keeps and shows the old top score.
+            if (currentScore >= topScore)
+            {
+                PlayerPrefs.SetInt("topscore", currentScore);
+                GameController.Instance.gameOverPanel.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>().text = currentScore.ToString(); // top score
+            }
+            else
+                GameController.Instance.gameOverPanel.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>().text = topScore.ToString();
+
+
+            // enables the game over UI panel.
+            GameController.Instance.gameOverPanel.SetActive(true);
         }
 
     }
@@ -125,13 +150,9 @@ public class PlayerController : MonoBehaviour
             direction = transform.right;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             direction = transform.forward;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            direction = -transform.forward;
-
-        Debug.Log(TouchPadController.Instance.direction);
-
+        //else if (Input.GetKeyDown(KeyCode.DownArrow))
+        //    direction = -transform.forward;
 
     }
-
 
 }
