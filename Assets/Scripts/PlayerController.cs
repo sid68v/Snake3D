@@ -73,8 +73,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("boundary") || other.CompareTag("body"))
         {
 
-            // pause game
-            Time.timeScale = 0;
 
             // vibrate
             Handheld.Vibrate();
@@ -99,6 +97,9 @@ public class PlayerController : MonoBehaviour
 
             // enables the game over UI panel.
             GameController.Instance.gameOverPanel.SetActive(true);
+
+            // pause game
+            Time.timeScale = 0;
         }
 
     }
